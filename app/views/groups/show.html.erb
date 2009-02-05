@@ -1,0 +1,25 @@
+<p>
+  <b>Name:</b>
+  <%=h @group.name %>
+</p>
+<% form_for(@membership) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :person %><br />
+    <%= f.text_field :person %>
+  </p>
+  <p>
+    <%= f.label :group %><br />
+    <!-- <%= f.text_field :group_id %> -->
+    <%= f.hidden_field(:group_id, :value => @group.id) %>
+    <!-- has to be here as hidden field so it appears in the url  -->
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
